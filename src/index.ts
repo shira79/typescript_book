@@ -15,16 +15,24 @@ const noneOption: Option<number> = {
 }
 
 function test(option: Option<number>) {
+    return mapOption(option, x => x*2);
+}
+
+function mapOption<T, U>(option: Option<T>, callback: (value: T) => U): Option<U> {
     if (isSome(option)) {
-        console.log(option.value);
+        return {
+            value: callback(option.value),
+            label: 'some'
+        }
     }
+    return option;
 }
 
 function isSome<T>(option: Option<T>): option is { value: T, label: 'some' } {
     return option.label === 'some';
 }
 
-test(someOption)
-test(noneOption);
+console.log(test(someOption))
+console.log(test(noneOption))
 
 
