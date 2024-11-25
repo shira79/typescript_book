@@ -1,5 +1,3 @@
-
-
 type Option<T> = {
     value: T;
     label: 'some';
@@ -17,9 +15,13 @@ const noneOption: Option<number> = {
 }
 
 function test(option: Option<number>) {
-    if (option.label === 'some') {
+    if (isSome(option)) {
         console.log(option.value);
     }
+}
+
+function isSome<T>(option: Option<T>): option is { value: T, label: 'some' } {
+    return option.label === 'some';
 }
 
 test(someOption)
