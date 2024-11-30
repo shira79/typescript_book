@@ -1,4 +1,4 @@
-class User {
+class Person {
     private readonly name: string;
     private readonly age: number;
 
@@ -16,5 +16,5 @@ class User {
 }
 
 
-const uhyo = new User( '  a  ', 26);
+const uhyo = new Person( '  a  ', 26);
 console.log(uhyo.getMessage('こんにちわ'));
